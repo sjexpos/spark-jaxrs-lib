@@ -6,7 +6,7 @@
   <description />  
   <groupId>io.oigres</groupId>
   <artifactId>spark-jaxrs-lib</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <inceptionYear>2021</inceptionYear>
@@ -53,7 +53,7 @@
     <connection>scm:git:https://github.com/sjexpos/spark-jaxrs-lib.git</connection>
     <developerConnection>scm:git:https://github.com/sjexpos/spark-jaxrs-lib.git</developerConnection>
     <url>scm:git:https://github.com/sjexpos/spark-jaxrs-lib.git</url>
-    <tag>v1.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
