@@ -1,0 +1,102 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Spark JaxRS example
+
+Parameters:
+  SecurityGroups:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+
+Resources:
+
+  ExampleApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Name: ExampleApi
+
+  ExampleApiRestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Example - API Rest
+      FunctionName: ExampleApiRestFunction
+      Runtime: java11
+      Handler: io.oigres.sparkkjax.examples.awslambda.LambdaHandler::handleRequest
+      CodeUri: ./${project.artifactId}-${project.version}.zip
+      Timeout: 200 # this is in seconds; Max is 900 sec = 15 minutes
+      MemorySize: 2048
+      Tracing: Active
+      Policies:
+        - AWSLambdaExecute
+        - AWSLambdaVPCAccessExecutionRole
+      VpcConfig:
+        SecurityGroupIds: !Ref SecurityGroups
+        SubnetIds: !Ref SubnetIds
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: GET
+            RestApiId:
+              Ref: ExampleApi
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: POST
+            RestApiId:
+              Ref: ExampleApi
+        PutResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: PUT
+            RestApiId:
+              Ref: ExampleApi
+        DeleteResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: DELETE
+            RestApiId:
+              Ref: ExampleApi
+        HeadResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: HEAD
+            RestApiId:
+              Ref: ExampleApi
+        OptionsResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: OPTIONS
+            RestApiId:
+              Ref: ExampleApi
+        TraceResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: TRACE
+            RestApiId:
+              Ref: ExampleApi
+        PatchResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: PATCH
+            RestApiId:
+              Ref: ExampleApi
+        ConnectResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: CONNECT
+            RestApiId:
+              Ref: ExampleApi
+      Environment:
+        Variables:
+          APP_LOG_LEVEL: INFO

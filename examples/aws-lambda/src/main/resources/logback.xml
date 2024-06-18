@@ -1,0 +1,17 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%10t] %40.40logger{5.10}:%-4L - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <variable name="APP_LOG_LEVEL" value="${APP_LOG_LEVEL:-INFO}"/>
+
+    <logger name="io.oigres.sparkkjax.examples.awslambda" level="${APP_LOG_LEVEL}" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
