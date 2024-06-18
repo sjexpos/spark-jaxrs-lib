@@ -8,7 +8,7 @@
   <description />  
   <groupId>io.oigres.sparkjax.sample</groupId>
   <artifactId>aws-lambda</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <inceptionYear>2021</inceptionYear>
@@ -32,7 +32,7 @@
     <dependency>
       <groupId>io.oigres</groupId>
       <artifactId>spark-jaxrs-lib</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
